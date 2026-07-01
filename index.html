@@ -117,39 +117,7 @@
 
   </main>
 
-  <!-- ══ FAB — Customize panel trigger ══ -->
-  <button
-    id="fabCustomize"
-    class="fab-customize"
-    type="button"
-    aria-label="Customize questions"
-    title="Edit questions"
-  >✏️</button>
 
-  <!-- ══ Overlay + Customize Drawer ══ -->
-  <div id="panelOverlay" class="panel-overlay" aria-hidden="true"></div>
-
-  <aside id="customizePanel" class="customize-panel" aria-label="Customize questions panel">
-    <div class="panel-handle" aria-hidden="true"></div>
-
-    <div class="panel-header">
-      <h3 class="panel-title">Edit Questions ✨</h3>
-      <button id="panelClose" class="panel-close" type="button" aria-label="Close panel">✕</button>
-    </div>
-
-    <div id="panelBody" class="panel-body">
-      <p style="font-size:0.88rem;color:#9a6c88;line-height:1.6;">
-        Edit your questions below and tap <strong>Save</strong> to apply changes. For permanent edits, update <code>questions.js</code>.
-      </p>
-      <!-- Question inputs are injected by JS -->
-    </div>
-
-    <div style="padding: 0 24px;">
-      <button id="panelSaveBtn" class="panel-save-btn" type="button">
-        💾 Save Changes
-      </button>
-    </div>
-  </aside>
 
   <!-- ══ Scripts (order matters) ══ -->
   <script src="questions.js"></script>

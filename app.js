@@ -280,46 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
     r.readAsDataURL(f);
   });
 
-  /* ════════════════════════════════════════════════════════
-     13. CUSTOMIZE PANEL
-  ═══════════════════════════════════════════════════════ */
-  const fab    = document.getElementById('fabCustomize');
-  const ovl    = document.getElementById('panelOverlay');
-  const panel  = document.getElementById('customizePanel');
-  const pClose = document.getElementById('panelClose');
-  const pSave  = document.getElementById('panelSaveBtn');
-  const pBody  = document.getElementById('panelBody');
 
-  const openPanel  = () => { buildPanel(); ovl.classList.add('open'); panel.classList.add('open'); document.body.style.overflow='hidden' };
-  const closePanel = () => { ovl.classList.remove('open'); panel.classList.remove('open'); document.body.style.overflow='' };
-  fab.addEventListener('click', openPanel);
-  ovl.addEventListener('click', closePanel);
-  pClose.addEventListener('click', closePanel);
-
-  function buildPanel(){
-    while(pBody.children.length>1) pBody.removeChild(pBody.lastChild);
-    questions.forEach((q,qi)=>{
-      const b=document.createElement('div'); b.className='q-edit-block';
-      b.innerHTML=`<div class="panel-section-title">Savol ${qi+1}</div>
-        <label>Emoji</label><input id="qe${qi}" value="${q.emoji}" maxlength="4"/>
-        <label>Savol matni</label><textarea id="qt${qi}" rows="2">${q.question}</textarea>
-        ${q.options.map((o,oi)=>`<label>${o.type==='positive'?'✅':'❌'} Javob ${oi+1}</label><input id="qo${qi}_${oi}" value="${o.label}"/>`).join('')}
-        <label>Ijobiy javob reaktsiyasi</label><input id="qr${qi}" value="${q.positiveResponse}"/>`;
-      pBody.appendChild(b);
-    });
-  }
-
-  pSave.addEventListener('click', ()=>{
-    questions.forEach((q,qi)=>{
-      const e=document.getElementById(`qe${qi}`), t=document.getElementById(`qt${qi}`), r=document.getElementById(`qr${qi}`);
-      if(e) q.emoji=e.value||q.emoji;
-      if(t) q.question=t.value||q.question;
-      if(r) q.positiveResponse=r.value||q.positiveResponse;
-      q.options.forEach((_,oi)=>{ const o=document.getElementById(`qo${qi}_${oi}`); if(o) q.options[oi].label=o.value||q.options[oi].label; });
-    });
-    if(screens.question.classList.contains('active')){ negPos={x:0,y:0}; renderQ(currentQ); }
-    closePanel(); showToast('💾 Saqlandi!');
-  });
 
   /* ════════════════════════════════════════════════════════
      14. NAVIGATION
